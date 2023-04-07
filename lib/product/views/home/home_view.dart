@@ -26,6 +26,7 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       body: DefaultTabController(
         length: 2,
         child: Scaffold(

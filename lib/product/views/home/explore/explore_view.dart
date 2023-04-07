@@ -4,10 +4,11 @@ class ExploreView extends StatelessWidget {
   const ExploreView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('ExploreView'),
-      ),
+    return  Scaffold(
+      body: Container(
+        color: Colors.red,
+
+      )
     );
   }
 }
