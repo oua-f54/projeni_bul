@@ -22,7 +22,7 @@ class _OnboardCard extends StatelessWidget {
             ],
           ),
         ),
-        _OnboardImage(imagePath: onboard.imageWithPath),
+        _OnboardLottie(lottiePath: onboard.lottiePath),
       ],
     );
   }

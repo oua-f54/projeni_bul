@@ -1,18 +1,18 @@
 part of "../onboard_view.dart";
 
-class _OnboardImage extends StatelessWidget {
-  const _OnboardImage({
-    required this.imagePath,
+class _OnboardLottie extends StatelessWidget {
+  const _OnboardLottie({
+    required this.lottiePath,
   });
 
-  final String imagePath;
+  final String lottiePath;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 55),
-        child: Image.asset(imagePath),
+        child: Lottie.asset(lottiePath),
       ),
     );
   }

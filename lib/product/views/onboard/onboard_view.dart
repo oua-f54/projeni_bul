@@ -5,6 +5,7 @@ import 'package:jam_architecture/product/constants/project_colors.dart';
 import 'package:jam_architecture/product/views/onboard/onboard_view_model.dart';
 import 'package:jam_architecture/product/widgets/description_text.dart';
 import 'package:jam_architecture/product/widgets/title_text.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../constants/color_constants.dart';
 import '../../constants/edgeInsents_constants.dart';
