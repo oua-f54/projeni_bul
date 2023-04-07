@@ -1,12 +1,12 @@
-enum LottieConstants { deneme }
+enum LottieConstants { onboardThinking }
 
 extension LottieItemsExtention on LottieConstants{
   String _path() {
     switch(this){
-      case LottieConstants.deneme:
-        return "deneme";
+      case LottieConstants.onboardThinking:
+        return "onboard_thinking";
     }
   }
 
-  String get lottiePath => "assets/lottie/${_path()}.json";
+  String get lottiePath => "asset/lottie/${_path()}.json";
 }
