@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:jam_architecture/app/app_router.dart';
 import 'package:jam_architecture/product/constants/project_colors.dart';
 import 'package:jam_architecture/product/views/onboard/onboard_view_model.dart';
-import 'package:jam_architecture/product/widgets/onboard_description.dart';
-import 'package:jam_architecture/product/widgets/onboard_title.dart';
+import 'package:jam_architecture/product/widgets/description_text.dart';
+import 'package:jam_architecture/product/widgets/title_text.dart';
 
 import '../../constants/color_constants.dart';
 import '../../constants/edgeInsents_constants.dart';
 import '../../constants/text_constants.dart';
-import '../../models/onboard_model.dart';
 import '../../widgets/project_back_button.dart';
 import '../../widgets/skip_button.dart';
 

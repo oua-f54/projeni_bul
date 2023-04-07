@@ -15,7 +15,7 @@ class LoginButon extends StatelessWidget {
         borderRadius: BorderRadius.circular(15)
       )
     ),
-    child: Text("Create Account",
+    child: Text("Log In",
       style: context.textTheme.titleLarge?.copyWith(
         fontWeight: FontWeight.w700,
         color: ProjectColors.canvasColor

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class ProjectColors{
   static Color primaryColor = const Color( 0xff418CF5 );
-  static Color primaryColorLight = const Color( 0xffd2f9e1 );
-  static Color primaryColorDark = const Color( 0xff13863e );
+  static Color primaryColorLight = const Color.fromARGB(255, 82, 173, 209);
+  static Color primaryColorDark = const Color.fromARGB(255, 25, 113, 237);
   static Color canvasColor =  const Color( 0xfffafafa );
-  static Color scaffoldBackgroundColor = const Color.fromARGB(250, 250, 250, 250);
+  static Color scaffoldBackgroundColor = const Color.fromARGB(252, 250, 250, 250);
   static Color cardColor = const Color( 0xffffffff );
   static Color dividerColor = const Color( 0x1f000000 );
   static Color highlightColor = const Color( 0x66bcbcbc );
