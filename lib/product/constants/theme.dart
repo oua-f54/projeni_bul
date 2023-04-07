@@ -377,6 +377,7 @@ class ThemeConsts {
       indicatorSize: TabBarIndicatorSize.tab,
       labelColor: Color(0xdd000000),
       unselectedLabelColor: Color(0xb2000000),
+      
     ),
     chipTheme: const ChipThemeData(
       backgroundColor: Color(0x1f000000),
