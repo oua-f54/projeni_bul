@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "264492426413",
+    "project_id": "projeni-bul-app",
+    "storage_bucket": "projeni-bul-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:264492426413:android:bc0e175ef78c6d809e1224",
+        "android_client_info": {
+          "package_name": "com.example.jam_architecture"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "264492426413-paucr0g6in54p27aeaklnf7q0b1gpgss.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSSme0mA45dhuqPCnvCDs90zf8M7SWvIM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "264492426413-paucr0g6in54p27aeaklnf7q0b1gpgss.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

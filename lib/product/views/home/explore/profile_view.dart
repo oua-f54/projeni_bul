@@ -33,10 +33,6 @@ class ProfileView extends StatelessWidget {
                       padding: const EdgeInsets.all(3),
                       child: Text("erhangocenn@gmail.com", style: context.textTheme.bodySmall?.copyWith(fontSize: 15),),
                     ),
-                    Container(
-                      padding: const EdgeInsets.all(3),
-                      child: Text("Junior Java Developer", style: context.textTheme.titleMedium,),
-                    ),
                   ],
                 ),
               ),
@@ -70,7 +66,6 @@ class ProfileView extends StatelessWidget {
                   ],
                 ),
               )
-              
             ],
           ),
         ),

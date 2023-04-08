@@ -12,7 +12,7 @@ class LoginButon extends StatelessWidget {
       context.replaceRoute(const HomeRoute());
     }, 
     style: ElevatedButton.styleFrom(
-      padding: const EdgeInsets.all(15),
+      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 50),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15)
       )
