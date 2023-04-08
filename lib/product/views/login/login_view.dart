@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jam_architecture/app/app_router.dart';
 import 'package:jam_architecture/product/constants/color_constants.dart';
 import 'package:jam_architecture/product/constants/image_constants_enum.dart';
 import 'package:jam_architecture/product/constants/project_colors.dart';
@@ -61,7 +62,9 @@ class LoginView extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text("Hesabın yok mu ?"),
-                TextButton(child: const Text("HESAP OLUŞTUR!"),onPressed: (){}),
+                TextButton(child: const Text("HESAP OLUŞTUR!"),onPressed: (){
+                  context.replaceRoute(const SignUpRoute());
+                }),
               ],
             )
           ),

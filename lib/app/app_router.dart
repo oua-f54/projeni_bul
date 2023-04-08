@@ -4,6 +4,7 @@ import '../product/views/add_project/add_project_view.dart';
 import '../product/views/login/login_view.dart';
 import '../product/views/onboard/onboard_view.dart';
 import '../product/views/project_detail/project_detail_view.dart';
+import '../product/views/sign_up/sign_up_view.dart';
 import '../product/views/splash/splash_view.dart';
 import '../product/views/home/home_view.dart';
 
@@ -18,6 +19,7 @@ class AppRouter extends _$AppRouter {
     AutoRoute(page: HomeRoute.page),
     AutoRoute(page: OnboardRoute.page),
     AutoRoute(page: LoginRoute.page),
+    AutoRoute(page: SignUpRoute.page),
     AutoRoute(page: ProjectDetailRoute.page),
     AutoRoute(page: AddProjectRoute.page),
   ];
