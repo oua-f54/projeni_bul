@@ -30,7 +30,7 @@ class ProfileView extends ConsumerWidget {
                   Container(
                     padding: const EdgeInsets.all(3),
                     child: Text(
-                      "Ahmet",
+                      "Yasemin",
                       style: context.textTheme.titleLarge,
                     ),
                   ),
