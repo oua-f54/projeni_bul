@@ -53,6 +53,10 @@ dependencies:
   firebase_auth: ^4.4.0
   cloud_firestore: ^4.5.0
 
+  #api
+  json_serializable: ^6.6.1
+  json_annotation: ^4.8.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

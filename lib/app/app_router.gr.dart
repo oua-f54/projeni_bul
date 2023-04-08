@@ -14,6 +14,12 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    AddProjectRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AddProjectView(),
+      );
+    },
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -48,13 +54,21 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SplashView(),
       );
     },
-    AddProjectRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const AddProjectView(),
-      );
-    },
   };
+}
+
+/// generated route for
+/// [AddProjectView]
+class AddProjectRoute extends PageRouteInfo<void> {
+  const AddProjectRoute({List<PageRouteInfo>? children})
+      : super(
+          AddProjectRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddProjectRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -147,20 +161,6 @@ class SplashRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SplashRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [AddProjectView]
-class AddProjectRoute extends PageRouteInfo<void> {
-  const AddProjectRoute({List<PageRouteInfo>? children})
-      : super(
-          AddProjectRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'AddProjectRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
