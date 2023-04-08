@@ -1,16 +1,17 @@
-# jam_architecture
+# Projeni Bul 
 
-A new Flutter project.
+## Proje Fikrimiz
 
-## Getting Started
+Projemizin an fikri, Akademi'de bir projeye katılmak isteyen veya proje fikri olan herkesin buluşabileceği bir platform oluşturmak.
 
-This project is a starting point for a Flutter application.
+## Uygulamamız ne yapar?
 
-A few resources to get you started if this is your first Flutter project:
+Uygulamamıza giriş yaptığımızda profil ekranınız otomatik olarak oluşturulacaktır. Ana ekrandan projeleri seçebilirsiniz ve bir projeye tıklamak sizi proje detaylarının olduğu bir sayfaya götürür. Ayrıca kendi projenizi de oluşturabilirsiniz.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Neler Yaptık
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Öncelikle proje fikrimizi belirledikten sonra Figma kullanarak uygulamamızı tasarladık.
+
+
+
+## Kaynakçalar
