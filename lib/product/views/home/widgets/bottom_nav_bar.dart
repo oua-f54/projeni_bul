@@ -40,6 +40,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return TabBar(
+      
       enableFeedback: false,
       automaticIndicatorColorAdjustment: true,
       labelColor: const Color.fromARGB(255, 42, 84, 183),

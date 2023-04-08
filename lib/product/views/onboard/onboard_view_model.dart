@@ -62,14 +62,14 @@ class Onboard{
 
   Onboard(this.title, this.description, this.lottiePath);
 
-}
+} 
 
 class OnboardItems {
   static final List<Onboard> datas = [
-    Onboard(TextConstants.onboardTitle, TextConstants.onboardSubtitle, LottieConstants.onboardThinking.lottiePath),
+    Onboard(TextConstants.onboardFirstTitle, TextConstants.onboardFirstSubtitle, LottieConstants.onboardThinking.lottiePath),
 
-    Onboard(TextConstants.onboardTitle, TextConstants.onboardSubtitle, LottieConstants.onboardTeam.lottiePath),
+    Onboard(TextConstants.onboardSecondTitle, TextConstants.onboardSecondSubtitle, LottieConstants.onboardTeam.lottiePath),
 
-    Onboard(TextConstants.onboardTitle, TextConstants.onboardSubtitle, LottieConstants.onboardProject.lottiePath)
+    Onboard(TextConstants.onboardThirdTitle, TextConstants.onboardThirdSubtitle, LottieConstants.onboardProject.lottiePath)
   ];
 }

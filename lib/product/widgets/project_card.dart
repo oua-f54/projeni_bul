@@ -1,23 +1,59 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:kartal/kartal.dart';
+
+import '../../app/app_router.dart';
+import '../constants/color_constants.dart';
+import '../constants/image_constants_enum.dart';
 
 class ProjectCard extends StatelessWidget {
-  const ProjectCard({Key? key}) : super(key: key);
+  const ProjectCard({
+    super.key,
+  });
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Card(
-          child: Container(
-            padding: const EdgeInsets.all(10),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(width: 170, height: 50, color: Colors.red,),
-                const SizedBox(width: 170,child: Text("data"),),
-                SizedBox(width: 170,child: const Text("data"))
-              ],
-            ),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Card(
+        child: Container(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            children: [
+              SizedBox(width: 192, height: 90,
+                child: Image.asset(ImageConstants.logo.toPath),
+              ),
+              Container(
+                padding: const EdgeInsets.only(top: 10),
+                width: 192, height: 49, 
+                child: Text("Airbnb", style: context.textTheme.titleLarge?.copyWith(
+                  fontWeight: FontWeight.w700
+                ),),
+              ),
+              const SizedBox(
+                width: 192,
+                child: Text("Travel made simple with a home away from home anywhere you need it."),
+              ),
+              Container(
+                alignment: Alignment.centerRight,
+                width: 192,
+                child: TextButton(child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text("Go Details", style: TextStyle(
+                      color: ColorConstants.appBlue,
+                      fontWeight: FontWeight.w700
+                    ),),
+                    const Icon(Icons.arrow_right)
+                  ],
+                ), onPressed: (){
+                  context.navigateTo(ProjectDetailRoute(title: "Airbnb"));
+                }),
+              )
+            ],
           ),
-        )
+        ),
+      ),
     );
   }
 }

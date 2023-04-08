@@ -2,26 +2,14 @@ enum ImageConstants{
   icChef,
   icDelivery,
   icOrder,
-  logo
+  logo,
+  defaultPp
 }
 
 extension ImageConstantsExtention on ImageConstants{
 
   String convertFullPathInAsset(String name){
     return "asset/images/$name.png";
-  }
-
-  String get toName{
-    switch(this){
-      case ImageConstants.icChef:
-        return "ic_chef";
-      case ImageConstants.icDelivery:
-        return "ic_delivery";
-      case ImageConstants.icOrder:
-        return "ic_order";
-      case ImageConstants.logo:
-        return "logo";
-    }
   }
 
   String get toPath{
@@ -34,6 +22,8 @@ extension ImageConstantsExtention on ImageConstants{
         return convertFullPathInAsset("ic_order");
       case ImageConstants.logo:
         return convertFullPathInAsset("logo");
+      case ImageConstants.defaultPp:
+        return convertFullPathInAsset("default_pp");
     }
   }
 }
