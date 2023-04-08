@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:jam_architecture/app/app_router.dart';
 import 'package:jam_architecture/product/constants/project_colors.dart';
 import 'package:jam_architecture/product/views/onboard/onboard_view_model.dart';
 import 'package:jam_architecture/product/widgets/description_text.dart';
@@ -63,15 +62,17 @@ class _OnboardViewState extends OnboardViewModel{
   AppBar _appBar() {
     return AppBar(
         backgroundColor: ColorConstants.transparent,
+        leading: isFirstItem? null : ProjectBackButton(onPressed: (){reductiomSelectedPage();}),
         actions: [
           ValueListenableBuilder(
             valueListenable: isBackEnable, 
             builder: (context, value, child) {
-              return value? const SkipButton() : const SizedBox();
+              return value? SkipButton(
+                onPressed: (){goToLogin();},
+              ) : const SizedBox();
             }
           )
         ],
-        leading: isFirstItem? null : ProjectBackButton(onPressed: (){reductiomSelectedPage();}),
       );
   }
 }

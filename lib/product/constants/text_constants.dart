@@ -1,7 +1,7 @@
 class TextConstants{
   static String skipButtonText = "Atla";
   static String onboardSubtitle = "Now you can order food any time right from your mobile.";
-  static String onboardNext = "Sonrki";
+  static String onboardNext = "Sonraki";
   static String onboardStart = "Başla";
 
   static String onboardFirstTitle = "Bir Fikir Dünyayı Değiştirir";

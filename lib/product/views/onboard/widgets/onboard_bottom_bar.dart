@@ -42,16 +42,12 @@ class _OnboardBottomBarState extends State<_OnboardBottomBar> {
           _OnboardTabIndicator(index: _index),
           FloatingActionButton(
             onPressed: () {
-              if(widget.isLastItem){
-                context.router.replace(const LoginRoute());
-              }
               widget.onPressButton();
             },
-            shape: const CircleBorder(),
-            backgroundColor: ProjectColors.primaryColor,
+            /* shape: const CircleBorder(), */
             child: Text(
               widget.isLastItem? TextConstants.onboardStart : TextConstants.onboardNext,
-              style: Theme.of(context).primaryTextTheme.titleSmall,
+              style: Theme.of(context).primaryTextTheme.titleSmall?.copyWith(color: Colors.white),
             ),
           )
         ],

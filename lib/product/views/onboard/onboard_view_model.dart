@@ -1,9 +1,11 @@
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:jam_architecture/app/app_base_view_model.dart';
 import 'package:jam_architecture/product/constants/lottie_constants.dart';
 import 'package:jam_architecture/product/views/onboard/onboard_view.dart';
 
+import '../../../app/app_router.dart';
 import '../../constants/text_constants.dart';
 
 abstract class OnboardViewModel extends BaseViewModel<OnboardView>{
@@ -19,6 +21,7 @@ abstract class OnboardViewModel extends BaseViewModel<OnboardView>{
 
   void incrementSelectedPage(){
     if(isLastItem){
+      goToLogin();
       return;
     }
     setSelectedPage(currentIndex+1);
@@ -52,6 +55,10 @@ abstract class OnboardViewModel extends BaseViewModel<OnboardView>{
       return;
     }
     isBackEnable.value = value;
+  }
+
+  void goToLogin(){
+    context.router.replace(const LoginRoute());
   }
 }
 
