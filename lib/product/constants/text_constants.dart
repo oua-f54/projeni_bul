@@ -11,4 +11,11 @@ class TextConstants{
   static String onboardFirstSubtitle = "Proje fikrini oluştur veya kendine uygun projelerde görev al.";
   static String onboardSecondSubtitle = "Güçlü bir ekiple ortak hedef doğrultusunda ilerle.";
   static String onboardThirdSubtitle = "Platform içerisinde bulacağın projelerle kendini ilgili olduğun alanda geliştir.";
+  
+  static String popularProjects = "Popular Projects"; 
+  static String recentAdded = "Recent Added"; 
+  static String search = "Search"; 
+  static String commingSoon = "Comming Soon"; 
+
+
 }
