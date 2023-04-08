@@ -2,61 +2,89 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jam_architecture/app/app_router.dart';
-import 'package:jam_architecture/product/constants/color_constants.dart';
+import 'package:jam_architecture/product/constants/edgeInsents_constants.dart';
 import 'package:jam_architecture/product/constants/image_constants_enum.dart';
 import 'package:jam_architecture/product/constants/project_colors.dart';
 import 'package:jam_architecture/product/views/login/login_view_provider.dart';
-import 'package:jam_architecture/product/widgets/login_button.dart';
+import 'package:jam_architecture/product/widgets/primary_elevated_button.dart';
+import 'package:jam_architecture/repositories/user_repository.dart';
 import 'package:kartal/kartal.dart';
+
+import '../../../models/user_model.dart';
+import '../../widgets/login_with_google.dart';
 
 @RoutePage()
 class LoginView extends ConsumerWidget {
-  const LoginView({Key? key}) : super(key: key);
+  LoginView({Key? key}) : super(key: key);
+  
+  final formKey = GlobalKey<FormState>();
+  UserModel user = UserModel(id: "", email: "", name: "", password: "");
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
+    
     final passwordVisiblity = ref.watch(loginViewProvider).passwordVisible;
 
     return Scaffold(
         body: Container(
-      padding: const EdgeInsets.all(15),
+      padding: EdgeInsetsConstants.paddingMedium,
       alignment: Alignment.center,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(
               height: context.isKeyBoardOpen ? 0 : context.dynamicHeight(0.23),
-              child: Image.asset(ImageConstants.logo.toPath)),
+              child: Image.asset(ImageConstants.logo.toPath)
+          ),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
-            child: Column(
-              children: [
-                TextField(
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.email, color: ProjectColors.primaryColor),
-                    label: const Text("Email"),
+            padding: EdgeInsetsConstants.formGeneralPadding,
+            child: Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  TextFormField(
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.email, color: ProjectColors.primaryColor),
+                      label: const Text("Email"),
+                    ),
+                    onSaved: (value){
+                      user.email = value;
+                    },
                   ),
-                ),
-                const SizedBox(height: 20),
-                TextField(
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.lock, color: ProjectColors.primaryColor),
-                    label: const Text("Şifre"),
-                    suffixIcon: TextButton(onPressed: (){
-                      ref.read(loginViewProvider).changePasswordVisiblity();
-                    }, child: Icon(passwordVisiblity? Icons.visibility : Icons.visibility_off))
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.lock, color: ProjectColors.primaryColor),
+                      label: const Text("Şifre"),
+                      suffixIcon: TextButton(onPressed: (){
+                        ref.read(loginViewProvider).changePasswordVisiblity();
+                      }, child: Icon(passwordVisiblity? Icons.visibility : Icons.visibility_off))
+                    ),
+                    obscureText: passwordVisiblity,
+                    enableSuggestions: false,
+                    autocorrect: false,
+                    onSaved: (value){
+                      user.password = value;
+                    },
                   ),
-                  obscureText: passwordVisiblity,
-                  enableSuggestions: false,
-                  autocorrect: false,
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-          const LoginButon(),
+          PrimaryElevatedButton(
+            isLoading: false,
+            text: "Giriş Yap", onPressed: (){
+              formKey.currentState!.save();
+              ref.read(userRepositoryNotifer).login(user).whenComplete(() => 
+                context.replaceRoute(const HomeRoute()
+              ).catchError((error,c){
+                print(error);
+              }
+            )
+          );
+          }),
           Container(
-            padding: const EdgeInsets.only(top:5),
+            padding: context.onlyTopPaddingLow,
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -68,28 +96,11 @@ class LoginView extends ConsumerWidget {
               ],
             )
           ),
-          Container(
-            padding: const EdgeInsets.only(top: 30),
-            child: InkWell(
-              onTap: (){},
-              child: Container(
-                padding: const EdgeInsets.only(left: 20),
-                decoration: BoxDecoration(border: Border.all(color: ColorConstants.lightGrey, width: 0.5), color: Colors.white),
-                 width: 350, height: 50,
-                child: Row(
-                  children:[
-                    Image.network(
-                      'http://pngimg.com/uploads/google/google_PNG19635.png',
-                      fit:BoxFit.cover
-                    ),
-                    Text("Log In With Google", style: context.textTheme.titleLarge,),
-                  ],
-                ),
-              ),
-            ),
-          )
+          const LoginWithGoogle()
         ],
       ),
     ));
   }
 }
+
+

@@ -40,8 +40,8 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin{
       )),
           body: TabBarView(
             controller: tabController,
-            children: const [
-              ExploreView(),
+            children: [
+              const ExploreView(),
               ProfileView()
             ],
           ),

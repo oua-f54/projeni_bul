@@ -17,5 +17,7 @@ class TextConstants{
   static String search = "Search"; 
   static String commingSoon = "Comming Soon"; 
 
+  static String loginWithGoogle = "Google ile giriş yap"; 
+
 
 }

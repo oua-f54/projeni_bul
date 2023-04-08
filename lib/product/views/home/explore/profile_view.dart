@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jam_architecture/product/constants/image_constants_enum.dart';
+import 'package:jam_architecture/repositories/user_repository.dart';
 import 'package:kartal/kartal.dart';
 
 import '../../../widgets/project_card.dart';
 
-class ProfileView extends StatelessWidget {
+class ProfileView extends ConsumerWidget {
   const ProfileView({Key? key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: SingleChildScrollView(
         child: SizedBox(
@@ -27,11 +30,13 @@ class ProfileView extends StatelessWidget {
                   children: [
                     Container(
                       padding: const EdgeInsets.all(3),
-                      child: Text("Erhan", style: context.textTheme.titleLarge,),
+                      child: Text(
+                        "Ahmet", 
+                      style: context.textTheme.titleLarge,),
                     ),
                     Container(
                       padding: const EdgeInsets.all(3),
-                      child: Text("erhangocenn@gmail.com", style: context.textTheme.bodySmall?.copyWith(fontSize: 15),),
+                      child: Text(ref.read(userRepositoryNotifer).auth.currentUser?.email??"", style: context.textTheme.bodySmall?.copyWith(fontSize: 15),),
                     ),
                   ],
                 ),

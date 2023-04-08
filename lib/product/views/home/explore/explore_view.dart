@@ -160,7 +160,7 @@ class SearcBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-            padding: EdgeInsetsConstants.externalPadding,
+            padding: EdgeInsetsConstants.searchBarexternalPadding,
             child: TextField(
               decoration: InputDecoration(
                 contentPadding: EdgeInsetsConstants.searchBarInnerPadding,

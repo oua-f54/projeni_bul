@@ -5,6 +5,7 @@ class AuthService{
   
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  
   CollectionReference userRef = FirebaseFirestore.instance.collection("users");
 
   Future<User?> logIn(String email, String password) async{ 
