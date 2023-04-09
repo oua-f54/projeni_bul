@@ -54,6 +54,7 @@ class SignUpView extends ConsumerWidget{
                           prefixIcon: Icon(Icons.person, color: ProjectColors.primaryColor),
                           label: const Text("Name"),
                         ),
+                        textInputAction: TextInputAction.next,
                         onSaved: (value){
                           user.name = value;
                         },
@@ -70,6 +71,7 @@ class SignUpView extends ConsumerWidget{
                           prefixIcon: Icon(Icons.email, color: ProjectColors.primaryColor),
                           label: const Text("Email"),
                         ),
+                        textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.emailAddress,
                         onSaved: (value){
                           user.email = value;
@@ -93,6 +95,7 @@ class SignUpView extends ConsumerWidget{
                             ref.read(signUpViewProvider).changePasswordVisiblity();
                           }, child: Icon(fistPasswordVisiblity? Icons.visibility : Icons.visibility_off))
                         ),
+                        textInputAction: TextInputAction.done,
                         onSaved: (value){
                           user.password = value;
                         },
