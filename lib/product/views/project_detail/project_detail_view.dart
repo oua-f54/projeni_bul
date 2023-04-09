@@ -35,12 +35,15 @@ class ProjectDetailView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: 
-                project.image.isNotNullOrNoEmpty?
-                Image.network(project.image!)
-                : Image.asset(ImageConstants.logo.toPath)
+              Container(
+                constraints: const BoxConstraints(maxHeight: 170),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10.0),
+                  child: 
+                  project.image.isNotNullOrNoEmpty?
+                  Image.network(project.image!, width: context.dynamicWidth(0.9), fit: BoxFit.cover,)
+                  : Image.asset(ImageConstants.logo.toPath, width: context.dynamicWidth(0.9), fit: BoxFit.cover,)
+                ),
               ),
               Container(
                 padding: context.onlyTopPaddingMedium,
@@ -51,17 +54,18 @@ class ProjectDetailView extends StatelessWidget {
                 child: SingleFilterButton(name: project.skill??"")
               ),
               Container(
-                padding: context.onlyBottomPaddingMedium,
+                padding: context.onlyBottomPaddingNormal,
                 width: context.dynamicWidth(0.9),
                 child: Card(
                   child: Container(
-                    height: context.dynamicHeight(0.28),
+                    constraints: BoxConstraints(
+                      minHeight: context.dynamicHeight(0.2),
+                      maxHeight: context.dynamicHeight(0.28)
+                    ),
                     padding: context.paddingNormal,
                     child:SingleChildScrollView(
                         child: Text(project.description??"", style: context.textTheme.titleMedium,)
-                      
                     )
-                    
                     ),
                 )
               ),

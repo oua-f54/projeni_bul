@@ -25,9 +25,13 @@ class ProjectCard extends StatelessWidget {
             children: [
               SizedBox(width: 192, height: 90,
                 child: 
-                project.image.isNotNullOrNoEmpty?
-                Image.network(project.image!)
-                : Image.asset(ImageConstants.logo.toPath)
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: 
+                  project.image.isNotNullOrNoEmpty?
+                Image.network(project.image!, fit: BoxFit.cover,)
+                : Image.asset(ImageConstants.logo.toPath, fit: BoxFit.cover,)
+                )
               ),
               Container(
                 padding: const EdgeInsets.only(top: 10),
