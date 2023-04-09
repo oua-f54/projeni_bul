@@ -16,51 +16,57 @@ class ProjectCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: Card(
-        child: Container(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            children: [
-              SizedBox(width: 192, height: 90,
-                child: 
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
+    return InkWell(
+      splashColor: Colors.transparent,
+      onTap: () {
+        context.navigateTo(ProjectDetailRoute(project: project));
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Card(
+          child: Container(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              children: [
+                SizedBox(width: 192, height: 90,
                   child: 
-                  project.image.isNotNullOrNoEmpty?
-                Image.network(project.image!, fit: BoxFit.cover,)
-                : Image.asset(ImageConstants.logo.toPath, fit: BoxFit.cover,)
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: 
+                    project.image.isNotNullOrNoEmpty?
+                  Image.network(project.image!, fit: BoxFit.cover,)
+                  : Image.asset(ImageConstants.logo.toPath, fit: BoxFit.cover,)
+                  )
+                ),
+                Container(
+                  padding: const EdgeInsets.only(top: 10),
+                  width: 192, height: 40, 
+                  child: Text(project.name??"", style: context.textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.w700
+                  ),),
+                ),
+                SizedBox(
+                  width: 192,
+                  child: Text(project.description??"",maxLines: 2, overflow: TextOverflow.ellipsis),
+                ),
+                Container(
+                  alignment: Alignment.centerRight,
+                  width: 192,
+                  child: TextButton(child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text("Go Details", style: TextStyle(
+                        color: ColorConstants.appBlue,
+                        fontWeight: FontWeight.w700
+                      ),),
+                      const Icon(Icons.arrow_right)
+                    ],
+                  ), onPressed: (){
+                    context.navigateTo(ProjectDetailRoute(project: project));
+                  }),
                 )
-              ),
-              Container(
-                padding: const EdgeInsets.only(top: 10),
-                width: 192, height: 40, 
-                child: Text(project.name??"", style: context.textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.w700
-                ),),
-              ),
-              SizedBox(
-                width: 192,
-                child: Text(project.description??"",maxLines: 2, overflow: TextOverflow.ellipsis),
-              ),
-              Container(
-                alignment: Alignment.centerRight,
-                width: 192,
-                child: TextButton(child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text("Go Details", style: TextStyle(
-                      color: ColorConstants.appBlue,
-                      fontWeight: FontWeight.w700
-                    ),),
-                    const Icon(Icons.arrow_right)
-                  ],
-                ), onPressed: (){
-                  context.navigateTo(ProjectDetailRoute(project: project));
-                }),
-              )
-            ],
+              ],
+            ),
           ),
         ),
       ),

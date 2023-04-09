@@ -52,6 +52,7 @@ class AddProjectView extends ConsumerWidget {
                       padding: const EdgeInsets.symmetric(vertical: 15),
                       child: TextFormField(
                         decoration: const InputDecoration(label: Text("Project Name")),
+                        textInputAction: TextInputAction.next,
                         validator: (value) {
                           if (value.isNullOrEmpty) {
                             return "Bu alan boş bırakılamaz";
@@ -67,6 +68,7 @@ class AddProjectView extends ConsumerWidget {
                       padding: const EdgeInsets.symmetric(vertical: 15),
                       child: TextFormField(
                         minLines: 4, maxLines: 5,decoration: const InputDecoration(labelText: "Project Description", alignLabelWithHint: true),
+                        textInputAction: TextInputAction.done,
                         validator: (value) {
                           if (value.isNullOrEmpty) {
                             return "Bu alan boş bırakılamaz";

@@ -50,6 +50,7 @@ class LoginView extends ConsumerWidget {
                         prefixIcon: Icon(Icons.email, color: ProjectColors.primaryColor),
                         label: const Text("Email"),
                       ),
+                      textInputAction: TextInputAction.next,
                       keyboardType: TextInputType.emailAddress,
                       onSaved: (value){
                         user.email = value;
@@ -73,6 +74,7 @@ class LoginView extends ConsumerWidget {
                           ref.read(loginViewProvider).changePasswordVisiblity();
                         }, child: Icon(passwordVisiblity? Icons.visibility : Icons.visibility_off))
                       ),
+                      textInputAction: TextInputAction.done,
                       validator: (value) {
                           if (value.isNullOrEmpty) {
                             return "Bu alan boş bırakılamaz";
