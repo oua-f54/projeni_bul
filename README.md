@@ -15,10 +15,12 @@ Uygulamamıza ilk girişinizde projenin amacını anlatan üç temel giriş ekra
 
 ## Uygulamayı Yapım Aşamaları 
 
+<p float="left">
 <img height="130" src="https://firebasestorage.googleapis.com/v0/b/projeni-bul-app.appspot.com/o/github%2Funnamed.jpg?alt=media&token=780effc2-1b47-4a78-95da-c6ed74f659ca"/>
 <img height="130" src="https://firebasestorage.googleapis.com/v0/b/projeni-bul-app.appspot.com/o/github%2Flogo.png?alt=media&token=62aa8627-be93-4dc4-be20-302664113ba2"/>
 <img height="130" src="https://firebasestorage.googleapis.com/v0/b/projeni-bul-app.appspot.com/o/github%2Fchannels4_profile.jpg?alt=media&token=85fc2121-cba3-4602-8ce1-55ff2b1f88c5"/>
 <img height="130" src="https://firebasestorage.googleapis.com/v0/b/projeni-bul-app.appspot.com/o/github%2Ffigma_logo.png?alt=media&token=05895e5f-1124-43c9-aa7f-df7b5c6bcd8f"/>
+</p>
 
 Öncelikle proje fikrimizi belirledikten sonra Figma kullanarak uygulamamızı tasarladık.
 Sonrasında flutter ile tasarımlarımızı mobil uygulamaya dönüştürmeye başladık. Hızlıca bir mimari kurup, riverpod kütüphanesi ile state management işlemlerini gerçekleştirdik. Bununla birlikte firebase kullanarak authentication ve veri yönetimi işlemlerini gerçekleştirdik. Takım arkadaşlarımız arasında iş bölümü yaptık ve herkes farklı görevlerde yer aldı. Yaptığımız ekip çalışması sayesinde uygulamamızı başarılı bir şekilde tamamladık. Yazdığımız kodları olabildiğince temiz tuttuk, okunaklı ve sürdürülebilir kod geliştirdik.
