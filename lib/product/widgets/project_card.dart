@@ -5,6 +5,7 @@ import 'package:kartal/kartal.dart';
 
 import '../../app/app_router.dart';
 import '../constants/color_constants.dart';
+import '../constants/image_constants_enum.dart';
 
 class ProjectCard extends StatelessWidget {
   const ProjectCard({
@@ -23,7 +24,10 @@ class ProjectCard extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(width: 192, height: 90,
-                child: Image.network(project.image??"https://firebasestorage.googleapis.com/v0/b/projeni-bul-app.appspot.com/o/Cozum_Kopyas.png?alt=media&token=7f9df94e-7fb0-482f-a452-3895e672ce5a"),
+                child: 
+                project.image.isNotNullOrNoEmpty?
+                Image.network(project.image!)
+                : Image.asset(ImageConstants.logo.toPath)
               ),
               Container(
                 padding: const EdgeInsets.only(top: 10),

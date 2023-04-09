@@ -1,7 +1,10 @@
+
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kartal/kartal.dart';
 
 import '../models/project.dart';
 
@@ -31,6 +34,14 @@ class ProjectRepository extends ChangeNotifier{
     
     ownProjectList = snapshot.docs.map((e)=> Project.fromJson(e.data())).toList();
     notifyListeners();
+  }
+
+  Future addProject(Project project) async{
+    project.author = auth.currentUser!.uid;
+    if(project.skill.isNullOrEmpty){
+      throw "Yetenek seçiniz";
+    }
+    await fireStore.collection("Projects").add(project.toJson());
   }
 
 }
