@@ -31,99 +31,101 @@ class LoginView extends ConsumerWidget {
         body: Container(
       padding: EdgeInsetsConstants.paddingMedium,
       alignment: Alignment.center,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(
-              height: context.isKeyBoardOpen ? 0 : context.dynamicHeight(0.23),
-              child: Image.asset(ImageConstants.logo.toPath)
-          ),
-          Container(
-            padding: EdgeInsetsConstants.formGeneralPadding,
-            child: Form(
-              key: formKey,
-              child: Column(
-                children: [
-                  TextFormField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.email, color: ProjectColors.primaryColor),
-                      label: const Text("Email"),
-                    ),
-                    keyboardType: TextInputType.emailAddress,
-                    onSaved: (value){
-                      user.email = value;
-                    },
-                    validator: (value) {
-                        if (value.isNullOrEmpty) {
-                          return "Bu alan boş bırakılamaz";
-                        }
-                        if (!value.isValidEmail) {
-                          return "Lütfen doğru bir email giriniz.";
-                        }
-                        return null;
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+                height: context.isKeyBoardOpen ? 0 : context.dynamicHeight(0.23),
+                child: Image.asset(ImageConstants.logo.toPath)
+            ),
+            Container(
+              padding: EdgeInsetsConstants.formGeneralPadding,
+              child: Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    TextFormField(
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.email, color: ProjectColors.primaryColor),
+                        label: const Text("Email"),
+                      ),
+                      keyboardType: TextInputType.emailAddress,
+                      onSaved: (value){
+                        user.email = value;
                       },
-                  ),
-                  const SizedBox(height: 20),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.lock, color: ProjectColors.primaryColor),
-                      label: const Text("Şifre"),
-                      suffixIcon: TextButton(onPressed: (){
-                        ref.read(loginViewProvider).changePasswordVisiblity();
-                      }, child: Icon(passwordVisiblity? Icons.visibility : Icons.visibility_off))
+                      validator: (value) {
+                          if (value.isNullOrEmpty) {
+                            return "Bu alan boş bırakılamaz";
+                          }
+                          if (!value.isValidEmail) {
+                            return "Lütfen doğru bir email giriniz.";
+                          }
+                          return null;
+                        },
                     ),
-                    validator: (value) {
-                        if (value.isNullOrEmpty) {
-                          return "Bu alan boş bırakılamaz";
-                        }
-                        return null;
+                    const SizedBox(height: 20),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.lock, color: ProjectColors.primaryColor),
+                        label: const Text("Şifre"),
+                        suffixIcon: TextButton(onPressed: (){
+                          ref.read(loginViewProvider).changePasswordVisiblity();
+                        }, child: Icon(passwordVisiblity? Icons.visibility : Icons.visibility_off))
+                      ),
+                      validator: (value) {
+                          if (value.isNullOrEmpty) {
+                            return "Bu alan boş bırakılamaz";
+                          }
+                          return null;
+                        },
+                      obscureText: passwordVisiblity,
+                      enableSuggestions: false,
+                      autocorrect: false,
+                      onSaved: (value){
+                        user.password = value;
                       },
-                    obscureText: passwordVisiblity,
-                    enableSuggestions: false,
-                    autocorrect: false,
-                    onSaved: (value){
-                      user.password = value;
-                    },
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          PrimaryElevatedButton(
-            isLoading: isLoading,
-            text: "Giriş Yap", onPressed: () async{
-              if(formKey.currentState!.validate()){
-                  formKey.currentState!.save();
-                  ref.read(loginViewProvider).changeLoading();
-                  try{
-                    await ref.read(userRepositoryNotifer).login(user);
-                    await ref.read(userRepositoryNotifer).getCurrentUser();
-                    await ref.read(projectRepositoryNotifer).getOwnProjects();
-                  }catch(e){
-                    ScaffoldMessenger.of(context)
-                    .showSnackBar(SnackBar(content: Text(e.toString())));
+            PrimaryElevatedButton(
+              isLoading: isLoading,
+              text: "Giriş Yap", onPressed: () async{
+                if(formKey.currentState!.validate()){
+                    formKey.currentState!.save();
                     ref.read(loginViewProvider).changeLoading();
-                    return;
-                  }
-                  ref.read(loginViewProvider).changeLoading();
-                  context.replaceRoute(const HomeRoute());
-              }
-          }),
-          Container(
-            padding: context.onlyTopPaddingLow,
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text("Hesabın yok mu ?"),
-                TextButton(child: const Text("HESAP OLUŞTUR!"),onPressed: (){
-                  context.replaceRoute(const SignUpRoute());
-                }),
-              ],
-            )
-          ),
-          const LoginWithGoogle()
-        ],
+                    try{
+                      await ref.read(userRepositoryNotifer).login(user);
+                      await ref.read(userRepositoryNotifer).getCurrentUser();
+                      await ref.read(projectRepositoryNotifer).getOwnProjects();
+                    }catch(e){
+                      ScaffoldMessenger.of(context)
+                      .showSnackBar(SnackBar(content: Text(e.toString())));
+                      ref.read(loginViewProvider).changeLoading();
+                      return;
+                    }
+                    ref.read(loginViewProvider).changeLoading();
+                    context.replaceRoute(const HomeRoute());
+                }
+            }),
+            Container(
+              padding: context.onlyTopPaddingLow,
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("Hesabın yok mu ?"),
+                  TextButton(child: const Text("HESAP OLUŞTUR!"),onPressed: (){
+                    context.replaceRoute(const SignUpRoute());
+                  }),
+                ],
+              )
+            ),
+            const LoginWithGoogle()
+          ],
+        ),
       ),
     ));
   }
