@@ -14,6 +14,12 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    AddProjectRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AddProjectView(),
+      );
+    },
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -24,6 +30,16 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const OnboardView(),
+      );
+    },
+    ProjectDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<ProjectDetailRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ProjectDetailView(
+          key: args.key,
+          project: args.project,
+        ),
       );
     },
     SplashRoute.name: (routeData) {
@@ -38,7 +54,27 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const LoginView(),
       );
     },
+    SignUpRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SignUpView(),
+      );
+    },
   };
+}
+
+/// generated route for
+/// [AddProjectView]
+class AddProjectRoute extends PageRouteInfo<void> {
+  const AddProjectRoute({List<PageRouteInfo>? children})
+      : super(
+          AddProjectRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddProjectRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -70,6 +106,44 @@ class OnboardRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ProjectDetailView]
+class ProjectDetailRoute extends PageRouteInfo<ProjectDetailRouteArgs> {
+  ProjectDetailRoute({
+    Key? key,
+    required Project project,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ProjectDetailRoute.name,
+          args: ProjectDetailRouteArgs(
+            key: key,
+            project: project,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ProjectDetailRoute';
+
+  static const PageInfo<ProjectDetailRouteArgs> page =
+      PageInfo<ProjectDetailRouteArgs>(name);
+}
+
+class ProjectDetailRouteArgs {
+  const ProjectDetailRouteArgs({
+    this.key,
+    required this.project,
+  });
+
+  final Key? key;
+
+  final Project project;
+
+  @override
+  String toString() {
+    return 'ProjectDetailRouteArgs{key: $key, project: $project}';
+  }
+}
+
+/// generated route for
 /// [SplashView]
 class SplashRoute extends PageRouteInfo<void> {
   const SplashRoute({List<PageRouteInfo>? children})
@@ -93,6 +167,20 @@ class LoginRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'LoginRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SignUpView]
+class SignUpRoute extends PageRouteInfo<void> {
+  const SignUpRoute({List<PageRouteInfo>? children})
+      : super(
+          SignUpRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SignUpRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

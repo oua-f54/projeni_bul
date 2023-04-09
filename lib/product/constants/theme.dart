@@ -5,9 +5,11 @@ import 'package:jam_architecture/product/constants/project_colors.dart';
 class ThemeConsts {
   static ThemeData light = ThemeData.light(useMaterial3: true).copyWith(
     appBarTheme: AppBarTheme(
+      shadowColor: Colors.transparent,
+      scrolledUnderElevation: 0,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.transparent)
+        systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.transparent),
       ),
     brightness: Brightness.light,
     primaryColor: ProjectColors.primaryColor,
@@ -29,7 +31,9 @@ class ThemeConsts {
       backgroundColor: ProjectColors.primaryColorDark
     ),
     textButtonTheme: TextButtonThemeData(
-      style: ButtonStyle(iconColor: MaterialStatePropertyAll(ProjectColors.primaryColorDark))
+      style: ButtonStyle(
+        iconColor: MaterialStatePropertyAll(ProjectColors.primaryColorDark),
+      )
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
@@ -58,9 +62,9 @@ class ThemeConsts {
       hoverColor: const Color(0x0a000000),
       colorScheme: ColorScheme(
         primary: ProjectColors.primaryColor,
-        secondary: const Color(0xff1fe068),
+        secondary: ProjectColors.primaryColorDark,
         surface: const Color(0xffffffff),
-        background: const Color(0xffa5f3c3),
+        background: ProjectColors.primaryColorLight,
         error: const Color(0xffd32f2f),
         onPrimary: const Color(0xff000000),
         onSecondary: const Color(0xff000000),
@@ -91,9 +95,9 @@ class ThemeConsts {
         fontStyle: FontStyle.normal,
       ),
       headlineLarge: TextStyle(
-        color: Color(0x8a000000),
+        color: Color.fromARGB(238, 0, 0, 0),
         fontSize: null,
-        fontWeight: FontWeight.w400,
+        fontWeight: FontWeight.w500,
         fontStyle: FontStyle.normal,
       ),
       headlineMedium: TextStyle(
@@ -111,7 +115,7 @@ class ThemeConsts {
       titleLarge: TextStyle(
         color: Color(0xdd000000),
         fontSize: 18,
-        fontWeight: FontWeight.w400,
+        fontWeight: FontWeight.w600,
         fontStyle: FontStyle.normal,
       ),
       titleMedium: TextStyle(
@@ -377,6 +381,7 @@ class ThemeConsts {
       indicatorSize: TabBarIndicatorSize.tab,
       labelColor: Color(0xdd000000),
       unselectedLabelColor: Color(0xb2000000),
+
     ),
     chipTheme: const ChipThemeData(
       backgroundColor: Color(0x1f000000),
@@ -406,15 +411,7 @@ class ThemeConsts {
         style: BorderStyle.none,
       )),
     ),
-    dialogTheme: const DialogTheme(
-        shape: RoundedRectangleBorder(
-      side: BorderSide(
-        color: Color(0xff000000),
-        width: 0,
-        style: BorderStyle.none,
-      ),
-      borderRadius: BorderRadius.all(Radius.circular(0.0)),
-    )),
+    
     bottomAppBarTheme: const BottomAppBarTheme(color: Color(0xffffffff)),
     switchTheme: SwitchThemeData(
       thumbColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
@@ -422,7 +419,7 @@ class ThemeConsts {
           return null;
         }
         if (states.contains(MaterialState.selected)) {
-          return const Color(0xff19b353);
+          return const Color( 0xff418CF5 );
         }
         return null;
       }),
@@ -431,8 +428,7 @@ class ThemeConsts {
           return null;
         }
         if (states.contains(MaterialState.selected)) {
-          return const Color(0xff19b353);
-        }
+return const Color( 0xff418CF5 );        }
         return null;
       }),
     ),
@@ -442,8 +438,7 @@ class ThemeConsts {
           return null;
         }
         if (states.contains(MaterialState.selected)) {
-          return const Color(0xff19b353);
-        }
+return const Color( 0xff418CF5 );        }
         return null;
       }),
     ),
@@ -453,31 +448,30 @@ class ThemeConsts {
           return null;
         }
         if (states.contains(MaterialState.selected)) {
-          return const Color(0xff19b353);
-        }
+return const Color( 0xff418CF5 );        }
         return null;
       }),
     ),
-    textSelectionTheme: const TextSelectionThemeData(
-      cursorColor: Color(0xff4285f4),
-      selectionColor: Color(0xffa5f3c3),
-      selectionHandleColor: Color(0xff79eca4),
+    
+    textSelectionTheme: TextSelectionThemeData(
+      cursorColor: const Color(0xff4285f4),
+      selectionColor: ProjectColors.primaryColorLight,
+      selectionHandleColor: ProjectColors.primaryColorLight,
     ),
     colorScheme: ColorScheme.fromSwatch(
-            primarySwatch: const MaterialColor(4283688843, {
-      50: Color(0xffe9fcf0),
-      100: Color(0xffd2f9e1),
-      200: Color(0xffa5f3c3),
-      300: Color(0xff79eca4),
-      400: Color(0xff4ce686),
-      500: Color(0xff1fe068),
-      600: Color(0xff19b353),
-      700: Color(0xff13863e),
-      800: Color(0xff0c5a2a),
-      900: Color(0xff062d15)
-    }))
-        .copyWith(secondary: const Color(0xff1fe068))
-        .copyWith(background: const Color(0xffa5f3c3))
+      primarySwatch: const MaterialColor(4282420725,{50: Color( 0xffe7f1fe )
+		, 100: Color( 0xffcfe2fc )
+		, 200: Color( 0xff9ec5fa )
+		, 300: Color( 0xff6ea8f7 )
+		, 400: Color( 0xff3d8bf5 )
+		, 500: Color( 0xff0d6ef2 )
+		, 600: Color( 0xff0a58c2 )
+		, 700: Color( 0xff084291 )
+		, 800: Color( 0xff052c61 )
+		, 900: Color( 0xff031630 )
+		}),)
+        .copyWith(secondary: ProjectColors.primaryColor)
+        .copyWith(background: ProjectColors.primaryColorLight)
         .copyWith(error: const Color(0xffd32f2f)),
   );
 

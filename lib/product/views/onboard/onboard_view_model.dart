@@ -1,9 +1,11 @@
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:jam_architecture/app/app_base_view_model.dart';
 import 'package:jam_architecture/product/constants/lottie_constants.dart';
 import 'package:jam_architecture/product/views/onboard/onboard_view.dart';
 
+import '../../../app/app_router.dart';
 import '../../constants/text_constants.dart';
 
 abstract class OnboardViewModel extends BaseViewModel<OnboardView>{
@@ -19,6 +21,7 @@ abstract class OnboardViewModel extends BaseViewModel<OnboardView>{
 
   void incrementSelectedPage(){
     if(isLastItem){
+      goToLogin();
       return;
     }
     setSelectedPage(currentIndex+1);
@@ -53,6 +56,11 @@ abstract class OnboardViewModel extends BaseViewModel<OnboardView>{
     }
     isBackEnable.value = value;
   }
+
+  void goToLogin(){
+    context.router.replace(LoginRoute());
+    /* context.router.replace(const HomeRoute()); */
+  }
 }
 
 class Onboard{
@@ -62,12 +70,14 @@ class Onboard{
 
   Onboard(this.title, this.description, this.lottiePath);
 
-}
+} 
 
 class OnboardItems {
   static final List<Onboard> datas = [
-    Onboard(TextConstants.onboardTitle, TextConstants.onboardSubtitle, LottieConstants.onboardThinking.lottiePath),
-    Onboard(TextConstants.onboardTitle, TextConstants.onboardSubtitle, LottieConstants.onboardThinking.lottiePath),
-    Onboard(TextConstants.onboardTitle, TextConstants.onboardSubtitle, LottieConstants.onboardThinking.lottiePath)
+    Onboard(TextConstants.onboardFirstTitle, TextConstants.onboardFirstSubtitle, LottieConstants.onboardThinking.lottiePath),
+
+    Onboard(TextConstants.onboardSecondTitle, TextConstants.onboardSecondSubtitle, LottieConstants.onboardTeam.lottiePath),
+
+    Onboard(TextConstants.onboardThirdTitle, TextConstants.onboardThirdSubtitle, LottieConstants.onboardProject.lottiePath)
   ];
 }
