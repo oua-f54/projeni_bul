@@ -1,10 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import '../models/project.dart';
 import '../product/views/add_project/add_project_view.dart';
-import '../product/views/login/login_view.dart';
+import '../product/views/auth/login/login_view.dart';
 import '../product/views/onboard/onboard_view.dart';
 import '../product/views/project_detail/project_detail_view.dart';
-import '../product/views/sign_up/sign_up_view.dart';
+import '../product/views/auth/sign_up/sign_up_view.dart';
 import '../product/views/splash/splash_view.dart';
 import '../product/views/home/home_view.dart';
 

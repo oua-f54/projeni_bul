@@ -2,16 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jam_architecture/product/constants/edgeInsents_constants.dart';
 import 'package:jam_architecture/product/constants/image_constants_enum.dart';
+import 'package:jam_architecture/repositories/project_repository.dart';
 import 'package:jam_architecture/repositories/user_repository.dart';
 import 'package:kartal/kartal.dart';
 
-import '../../../widgets/project_card.dart';
+import '../../widgets/project_card.dart';
 
 class ProfileView extends ConsumerWidget {
   const ProfileView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
+    final ownProjectList = ref.watch(projectRepositoryNotifer).ownProjectList;
+
     return Scaffold(
         body: SingleChildScrollView(
       child: SizedBox(
@@ -30,7 +34,7 @@ class ProfileView extends ConsumerWidget {
                   Container(
                     padding: const EdgeInsets.all(3),
                     child: Text(
-                      "Yasemin",
+                      ref.watch(userRepositoryNotifer).userModel.name??"",
                       style: context.textTheme.titleLarge,
                     ),
                   ),
@@ -61,17 +65,23 @@ class ProfileView extends ConsumerWidget {
                       ),
                     ),
                   ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Container(
-                      padding: EdgeInsetsConstants.rowBottomPadding,
-                      child: Row(
-                        children: const [
-                          ProjectCard(),
-                          ProjectCard(),
-                          ProjectCard(),
-                          ProjectCard(),
-                        ],
+                  Container(
+                    padding: context.onlyBottomPaddingMedium,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: SizedBox(
+                          width: context.dynamicWidth(1),
+                          height: 250,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: ownProjectList.length,
+                            itemBuilder: (context, index) {
+                              return ProjectCard(project: ownProjectList[index],);
+                            },
+                          ),
+                        ),
                       ),
                     ),
                   ),

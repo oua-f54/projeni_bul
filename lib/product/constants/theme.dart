@@ -5,6 +5,8 @@ import 'package:jam_architecture/product/constants/project_colors.dart';
 class ThemeConsts {
   static ThemeData light = ThemeData.light(useMaterial3: true).copyWith(
     appBarTheme: AppBarTheme(
+      shadowColor: Colors.transparent,
+      scrolledUnderElevation: 0,
         backgroundColor: Colors.transparent,
         elevation: 0,
         systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.transparent),
@@ -93,9 +95,9 @@ class ThemeConsts {
         fontStyle: FontStyle.normal,
       ),
       headlineLarge: TextStyle(
-        color: Color(0x8a000000),
+        color: Color.fromARGB(238, 0, 0, 0),
         fontSize: null,
-        fontWeight: FontWeight.w400,
+        fontWeight: FontWeight.w500,
         fontStyle: FontStyle.normal,
       ),
       headlineMedium: TextStyle(
@@ -409,15 +411,7 @@ class ThemeConsts {
         style: BorderStyle.none,
       )),
     ),
-    dialogTheme: const DialogTheme(
-        shape: RoundedRectangleBorder(
-      side: BorderSide(
-        color: Color(0xff000000),
-        width: 0,
-        style: BorderStyle.none,
-      ),
-      borderRadius: BorderRadius.all(Radius.circular(0.0)),
-    )),
+    
     bottomAppBarTheme: const BottomAppBarTheme(color: Color(0xffffffff)),
     switchTheme: SwitchThemeData(
       thumbColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {

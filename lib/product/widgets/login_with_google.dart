@@ -15,7 +15,9 @@ class LoginWithGoogle extends StatelessWidget {
     return Container(
       padding: context.onlyTopPaddingMedium,
       child: InkWell(
-        onTap: (){},
+        onTap: (){
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(TextConstants.commingSoon)));
+        },
         child: Container(
           padding: context.onlyLeftPaddingNormal,
           decoration: BoxDecoration(border: Border.all(color: ColorConstants.whiteGrey, width: 2.5), color: Colors.white),

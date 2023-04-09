@@ -4,7 +4,7 @@ import 'package:jam_architecture/product/constants/image_constants_enum.dart';
 import 'package:jam_architecture/product/views/splash/splash_view_model.dart';
 
 @RoutePage()
-class SplashView extends StatefulWidget {
+class SplashView extends StatefulWidget{
   const SplashView({Key? key}) : super(key: key);
 
   @override
@@ -16,7 +16,6 @@ class _SplashViewState extends SplashViewModel{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(80.0),

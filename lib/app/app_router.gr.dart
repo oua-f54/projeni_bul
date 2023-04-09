@@ -26,14 +26,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const HomeView(),
       );
     },
-    LoginRoute.name: (routeData) {
-      final args = routeData.argsAs<LoginRouteArgs>(
-          orElse: () => const LoginRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: LoginView(key: args.key),
-      );
-    },
     OnboardRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -46,7 +38,7 @@ abstract class _$AppRouter extends RootStackRouter {
         routeData: routeData,
         child: ProjectDetailView(
           key: args.key,
-          title: args.title,
+          project: args.project,
         ),
       );
     },
@@ -54,6 +46,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const SplashView(),
+      );
+    },
+    LoginRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const LoginView(),
       );
     },
     SignUpRoute.name: (routeData) {
@@ -94,34 +92,6 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [LoginView]
-class LoginRoute extends PageRouteInfo<LoginRouteArgs> {
-  LoginRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
-          LoginRoute.name,
-          args: LoginRouteArgs(key: key),
-          initialChildren: children,
-        );
-
-  static const String name = 'LoginRoute';
-
-  static const PageInfo<LoginRouteArgs> page = PageInfo<LoginRouteArgs>(name);
-}
-
-class LoginRouteArgs {
-  const LoginRouteArgs({this.key});
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'LoginRouteArgs{key: $key}';
-  }
-}
-
-/// generated route for
 /// [OnboardView]
 class OnboardRoute extends PageRouteInfo<void> {
   const OnboardRoute({List<PageRouteInfo>? children})
@@ -140,13 +110,13 @@ class OnboardRoute extends PageRouteInfo<void> {
 class ProjectDetailRoute extends PageRouteInfo<ProjectDetailRouteArgs> {
   ProjectDetailRoute({
     Key? key,
-    required String title,
+    required Project project,
     List<PageRouteInfo>? children,
   }) : super(
           ProjectDetailRoute.name,
           args: ProjectDetailRouteArgs(
             key: key,
-            title: title,
+            project: project,
           ),
           initialChildren: children,
         );
@@ -160,16 +130,16 @@ class ProjectDetailRoute extends PageRouteInfo<ProjectDetailRouteArgs> {
 class ProjectDetailRouteArgs {
   const ProjectDetailRouteArgs({
     this.key,
-    required this.title,
+    required this.project,
   });
 
   final Key? key;
 
-  final String title;
+  final Project project;
 
   @override
   String toString() {
-    return 'ProjectDetailRouteArgs{key: $key, title: $title}';
+    return 'ProjectDetailRouteArgs{key: $key, project: $project}';
   }
 }
 
@@ -183,6 +153,20 @@ class SplashRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SplashRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [LoginView]
+class LoginRoute extends PageRouteInfo<void> {
+  const LoginRoute({List<PageRouteInfo>? children})
+      : super(
+          LoginRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'LoginRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

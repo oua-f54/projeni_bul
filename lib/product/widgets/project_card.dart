@@ -1,15 +1,17 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:jam_architecture/models/project.dart';
 import 'package:kartal/kartal.dart';
 
 import '../../app/app_router.dart';
 import '../constants/color_constants.dart';
-import '../constants/image_constants_enum.dart';
 
 class ProjectCard extends StatelessWidget {
   const ProjectCard({
-    super.key,
+    super.key, required this.project,
   });
+
+  final Project project;
 
   @override
   Widget build(BuildContext context) {
@@ -21,18 +23,18 @@ class ProjectCard extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(width: 192, height: 90,
-                child: Image.asset(ImageConstants.logo.toPath),
+                child: Image.network(project.image??"https://firebasestorage.googleapis.com/v0/b/projeni-bul-app.appspot.com/o/Cozum_Kopyas.png?alt=media&token=7f9df94e-7fb0-482f-a452-3895e672ce5a"),
               ),
               Container(
                 padding: const EdgeInsets.only(top: 10),
-                width: 192, height: 49, 
-                child: Text("Airbnb", style: context.textTheme.titleLarge?.copyWith(
+                width: 192, height: 40, 
+                child: Text(project.name??"", style: context.textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.w700
                 ),),
               ),
-              const SizedBox(
+              SizedBox(
                 width: 192,
-                child: Text("Travel made simple with a home away from home anywhere you need it."),
+                child: Text(project.description??"",maxLines: 2, overflow: TextOverflow.ellipsis),
               ),
               Container(
                 alignment: Alignment.centerRight,
@@ -47,7 +49,7 @@ class ProjectCard extends StatelessWidget {
                     const Icon(Icons.arrow_right)
                   ],
                 ), onPressed: (){
-                  context.navigateTo(ProjectDetailRoute(title: "Airbnb"));
+                  context.navigateTo(ProjectDetailRoute(project: project));
                 }),
               )
             ],

@@ -3,7 +3,7 @@ import 'package:jam_architecture/product/constants/project_colors.dart';
 import "package:kartal/kartal.dart";
 
 class PrimaryElevatedButton extends StatefulWidget {
-  const PrimaryElevatedButton({Key? key, required this.text, required this.onPressed, required this.isLoading}) : super(key: key);
+  const PrimaryElevatedButton({Key? key, required this.text, required this.onPressed, this.isLoading = false}) : super(key: key);
 
   final String text;
   final VoidCallback onPressed;
@@ -34,7 +34,7 @@ class _PrimaryElevatedButtonState extends State<PrimaryElevatedButton> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: context.dynamicWidth(0.4),
+      width: context.dynamicWidth(0.45),
       child: ElevatedButton(onPressed: (){
         widget.onPressed();
       }, 

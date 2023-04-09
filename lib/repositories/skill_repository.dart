@@ -1,6 +1,3 @@
-
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,13 +10,17 @@ class SkillRepository extends ChangeNotifier{
 
   SkillRepository(FirebaseFirestore firebaseFirestore){
     fireStore = firebaseFirestore;
+    getAllSkills();
   }
 
-  Future<List<Skill>> getAllSkills() async{
+  List<Skill> skillList = [];
+
+  Future<void> getAllSkills() async{
     var snapshot = await fireStore.collection("Skills").get();
-    var skills = snapshot.docs.map((e)=> Skill.fromJson(e.data())).toList();
-    return skills;
+    skillList = snapshot.docs.map((e)=> Skill.fromJson(e.data())).toList();
+    notifyListeners();
   }
+
 }
 
 final skillRepositoryNotifer = ChangeNotifierProvider((ref) => 

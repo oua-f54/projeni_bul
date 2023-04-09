@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jam_architecture/product/constants/color_constants.dart';
 import 'package:jam_architecture/product/constants/edgeInsents_constants.dart';
 import 'package:jam_architecture/product/constants/text_constants.dart';
+import 'package:jam_architecture/repositories/project_repository.dart';
+import 'package:jam_architecture/repositories/skill_repository.dart';
 import 'package:kartal/kartal.dart';
 
-import '../../../widgets/project_card.dart';
+import '../../widgets/project_card.dart';
 
-class ExploreView extends StatelessWidget {
+class ExploreView extends ConsumerWidget {
   const ExploreView({Key? key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final skillist = ref.watch(skillRepositoryNotifer).skillList;
+    final projectList = ref.watch(projectRepositoryNotifer).projectList;
+
     return Scaffold(
         body: SingleChildScrollView(
       child: Container(
@@ -26,15 +33,17 @@ class ExploreView extends StatelessWidget {
               ),
             ),
             SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: const [
-                  SingleFilterButton(),
-                  SingleFilterButton(),
-                  SingleFilterButton(),
-                  SingleFilterButton(),
-                  SingleFilterButton(),
-                ],
+              scrollDirection: Axis.vertical,
+              child: SizedBox(
+                width: 500,
+                height: 40,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: skillist.length,
+                  itemBuilder: (context, index) {
+                    return SingleFilterButton(name: skillist[index].name ?? "");
+                  },
+                ),
               ),
             ),
             Container(
@@ -44,7 +53,7 @@ class ExploreView extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: Container(
-                      padding: EdgeInsetsConstants.paddingMedium,
+                      padding: context.paddingNormal,
                       child: Text(
                         TextConstants.popularProjects,
                         style: context.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w800),
@@ -53,14 +62,18 @@ class ExploreView extends StatelessWidget {
                   ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
-                    child: Container(
-                      child: Row(
-                        children: const [
-                          ProjectCard(),
-                          ProjectCard(),
-                          ProjectCard(),
-                          ProjectCard(),
-                        ],
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: SizedBox(
+                        width: context.dynamicWidth(1),
+                        height: 250,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: projectList.length,
+                          itemBuilder: (context, index) {
+                            return ProjectCard(project: projectList[index]);
+                          },
+                        ),
                       ),
                     ),
                   ),
@@ -74,23 +87,32 @@ class ExploreView extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: Container(
-                      padding: EdgeInsetsConstants.paddingMedium,
+                      padding: context.paddingNormal,
                       child: Text(
                         TextConstants.recentAdded,
                         style: context.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w800),
                       ),
                     ),
                   ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Container(
-                      child: Row(
-                        children: const [
-                          ProjectCard(),
-                          ProjectCard(),
-                          ProjectCard(),
-                          ProjectCard(),
-                        ],
+                  Container(
+                    padding: context.onlyBottomPaddingMedium,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: SizedBox(
+                          width: context.dynamicWidth(1),
+                          height: 250,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: projectList.length,
+                            itemBuilder: (context, index) {
+                              return ProjectCard(
+                                project: projectList.reversed.toList()[index],
+                              );
+                            },
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -132,7 +154,10 @@ class FilterButton extends StatelessWidget {
 class SingleFilterButton extends StatelessWidget {
   const SingleFilterButton({
     super.key,
+    required this.name,
   });
+
+  final String name;
 
   @override
   Widget build(BuildContext context) {
@@ -145,7 +170,7 @@ class SingleFilterButton extends StatelessWidget {
           style: ElevatedButton.styleFrom(
               padding: EdgeInsetsConstants.singlerFilterButtonPadding, backgroundColor: ColorConstants.appYellow),
           child: Text(
-            "Flutter",
+            name,
             style: context.textTheme.titleMedium?.copyWith(color: Colors.white, fontWeight: FontWeight.w500),
           ),
         ));
@@ -160,18 +185,18 @@ class SearcBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-            padding: EdgeInsetsConstants.searchBarexternalPadding,
-            child: TextField(
-              decoration: InputDecoration(
-                contentPadding: EdgeInsetsConstants.searchBarInnerPadding,
-                suffixIcon: const Icon(Icons.search),
-                suffixIconColor: ColorConstants.appGreen,
-                label: Text(TextConstants.search),
-                border: customOutline(),
-                focusedBorder: customOutline(),
-                enabledBorder: customOutline(),
-              ),
-            ));
+        padding: EdgeInsetsConstants.searchBarexternalPadding,
+        child: TextField(
+          decoration: InputDecoration(
+            contentPadding: EdgeInsetsConstants.searchBarInnerPadding,
+            suffixIcon: const Icon(Icons.search),
+            suffixIconColor: ColorConstants.appGreen,
+            label: Text(TextConstants.search),
+            border: customOutline(),
+            focusedBorder: customOutline(),
+            enabledBorder: customOutline(),
+          ),
+        ));
   }
 
   OutlineInputBorder customOutline() {

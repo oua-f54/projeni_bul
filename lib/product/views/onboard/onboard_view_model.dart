@@ -59,6 +59,7 @@ abstract class OnboardViewModel extends BaseViewModel<OnboardView>{
 
   void goToLogin(){
     context.router.replace(LoginRoute());
+    /* context.router.replace(const HomeRoute()); */
   }
 }
 

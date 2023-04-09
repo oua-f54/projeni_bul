@@ -1,3 +1,4 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,10 @@ class UserRepository extends ChangeNotifier{
   UserRepository(FirebaseFirestore firebaseFirestore, FirebaseAuth firebaseAuth){
     fireStore = firebaseFirestore;
     auth = firebaseAuth;
+    getCurrentUser();
   }
+
+  UserModel userModel = UserModel(id: "", name: "", email: "", password: "");
 
   Future<void> createUser(UserModel userModel) async{
     UserCredential user = await auth.createUserWithEmailAndPassword(email: userModel.email??"", password: userModel.password??"");
@@ -25,6 +29,16 @@ class UserRepository extends ChangeNotifier{
   Future<void> login(UserModel userModel) async{
     UserCredential user = await auth.signInWithEmailAndPassword(email: userModel.email??"", password: userModel.password??"");
   }
+
+  Future<void> getCurrentUser() async{
+    if(auth.currentUser != null){
+      var response = await fireStore.collection("Users").where("id", isEqualTo: auth.currentUser!.uid).get();
+      var data = UserModel.fromJson(response.docs.first.data());
+      userModel = data;  
+      notifyListeners();
+    }
+  }
+
 }
 
 final userRepositoryNotifer = ChangeNotifierProvider((ref) => 

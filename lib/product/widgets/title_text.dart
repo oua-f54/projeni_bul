@@ -8,7 +8,6 @@ class TitleText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.centerLeft,
       padding: EdgeInsetsConstants.onboardSubtitlePadding,
       child: Text(text, style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold, color: Colors.black)),
     );
